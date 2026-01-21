@@ -1,13 +1,11 @@
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import './App.css'
 import Home from './pages/Home';
-import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
-import PostList from './pages/PostList';
-import PhotoList from './pages/PhotoList';
-import ListaUtenti from './pages/ListaUtenti';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import Classes from './pages/Classes';
+import RandomImage from './pages/RandomImage';
+import SearchByTag from './pages/SearchByTag';
+
 
 const client = new QueryClient({
   defaultOptions: {
@@ -29,22 +27,18 @@ function App(){
       <BrowserRouter>
         <nav>
           <Link to='/home'>Home</Link>
-          <Link to='/dashboard'>Dashboard</Link>
+          <Link to='/randomImage'>Random Image</Link>
+          <Link to='/searchByTag'>Search By Tag</Link>
           <Link to='/login'>Login</Link>
-          <Link to='/posts'>Posts</Link>
-          <Link to='/listaUtenti'>Lista Utenti</Link>
-          <Link to='/listaPhoto'>Lista Photo</Link>
-          <Link to='/classes'>Classes</Link>
+          
         </nav>
 
         <Routes>
           <Route path='/home' element={<Home/>}/>
-          <Route path='/dashboard' element={<Dashboard/>}/>
+          <Route path='/randomImage' element={<RandomImage/>}/>
+          <Route path='/searchByTag' element={<SearchByTag/>}/>
           <Route path='/login' element={<Login/>}/>
-          <Route path='/posts' element={<PostList/>}/>
-          <Route path='/listaUtenti' element={<ListaUtenti/>}/>
-          <Route path='/listaPhoto' element={<PhotoList/>}/>
-          <Route path='/classes' element={<Classes/>}/>
+          
           </Routes>
       </BrowserRouter>
 

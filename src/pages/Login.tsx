@@ -13,7 +13,7 @@ export default function Login(){
     function handleSubmit(e: FormEvent<HTMLFormElement>){
         e.preventDefault();
         console.log("Form inviata");
-        navigate(`/dashboard`, {state:{username: username} as ILoginNavigateState});
+        navigate(`/searchbytag`, {state:{username: username} as ILoginNavigateState});
     }
     
     return (
