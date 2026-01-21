@@ -2,12 +2,9 @@ import{ useState, useEffect, useRef } from "react";
 import axios from "axios";
 import ProductList from "./ProductList";
 import SearchInput from "./SearchInput";
+import type { INekoImage } from "../hook/TNekoImageList";
 
-type Product = {
-  id: number;
-  title: string;
-  image: string;
-};
+type Product = INekoImage;
 
 const AutocompleteSearchBar = () => {
   const [query, setQuery] = useState("");
@@ -18,7 +15,7 @@ const AutocompleteSearchBar = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const { data } = await axios.get("https://fakestoreapi.com/products");
+      const { data } = await axios.get("https://api.nekosia.cat/api/v1");
       setProducts(data);
     };
 
@@ -30,7 +27,7 @@ const AutocompleteSearchBar = () => {
     setSelectedProductIndex(-1);
     setSearchResults(
       products.filter((product) =>
-        product.title.toLowerCase().includes(event.target.value.toLowerCase())
+        product.tags.includes(event.target.value.toLowerCase())
       )
     );
   };
@@ -47,7 +44,7 @@ const AutocompleteSearchBar = () => {
     } else if (event.key === "Enter") {
       if (selectedProductIndex !== -1) {
         const selectedProduct = searchResults[selectedProductIndex];
-        alert(`You selected ${selectedProduct.title}`);
+        alert(`You selected ${selectedProduct.tags}`);
         setQuery("");
         setSelectedProductIndex(-1);
         setSearchResults([]);
@@ -56,7 +53,7 @@ const AutocompleteSearchBar = () => {
   };
 
   const handleProductClick = (product: Product) => {
-    alert(`You selected ${product.title}`);
+    alert(`You selected ${product.tags}`);
     setQuery("");
     setSelectedProductIndex(-1);
   };

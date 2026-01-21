@@ -1,6 +1,6 @@
 import React from "react";
 
-type SearchInputProps = {
+export type SearchInputProps = {
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
@@ -13,7 +13,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
   onChange,
   onKeyDown,
   inputRef,
-  placeholder = "Search products",
+  placeholder = "Search tags...",
 }) => {
   return (
     <input

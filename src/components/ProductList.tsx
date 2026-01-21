@@ -1,9 +1,6 @@
+import type { INekoImage } from "../hook/TNekoImageList";
 
-type Product = {
-  id: number;
-  title: string;
-  image: string;
-};
+type Product = INekoImage
 
 type ProductListProps = {
   products: Product[];
@@ -20,15 +17,15 @@ const ProductList: React.FC<ProductListProps> = ({
     <div className="bg-white max-h-96 overflow-y-scroll resultProductContainer">
       {products.map((product, index) => (
         <div
-          key={product.id}
+          key={product.tags.join(',')}
           id={`product-${index}`}
           className={`py-2 px-4 flex items-center justify-between gap-8 hover:bg-gray-200 cursor-pointer ${
             selectedProductIndex === index ? "bg-gray-200 " : ""
           }`}
           onClick={() => handleProductClick(product)}
         >
-          <p className="font-medium">{product.title}</p>
-          <img src={product.image} alt="" className=" w-8" />
+          <p className="font-medium">{product.tags}</p>
+          <img src={product.image.original.url} alt="" className=" w-8" />
         </div>
       ))}
     </div>

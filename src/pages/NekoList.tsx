@@ -24,9 +24,9 @@ export default function NekoList(){
 
     return (
         <div>
-            {data && data.map((photo: INekoImage) =>{
+            {data && data.map((photo: INekoImage) => {
                 return(
-                    <div key={photo.id} style={{marginBottom: '20px'}}>
+                    <div key={(photo.id)} style={{marginBottom: '20px'}}>
                         <h4>{photo.id}</h4>
                         <img src={photo.image.original.url} /> 
                     </div>
