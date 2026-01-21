@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import LikeButton from "../components/LikeButton";
 
 export default function RandomImage() {
 
@@ -9,6 +10,8 @@ export default function RandomImage() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [highQuality, setHighQuality] = useState(false);
+    const [URLSavedCompressed, setURLSavedCompressed] = useState([]);
+    const [URLSaved, setURLSaved] = useState([]);
 
     const fetchNekoImage = async () => {
         setLoading(true);
@@ -17,6 +20,8 @@ export default function RandomImage() {
         try {
             const res = await axios.get('https://api.nekosia.cat/api/v1/images/catgirl');
             setImageURL(res.data.image.original.url);
+            setURLSaved(res.data.image.original.url);
+            setURLSavedCompressed(res.data.image.compressed.url);
             setImageURLCompressed(res.data.image.compressed.url);
             setCategory(res.data.category);
             setHighQuality(false);
@@ -61,19 +66,28 @@ export default function RandomImage() {
             
             {imageURLCompressed && imageURLCompressed.length === 0 && <p>Nessuna immagine con questo URL</p>}
             {!loading && imageURLCompressed && !highQuality && (
+                <>
                 <img
                     src={imageURLCompressed}
                     alt={category}
-                    style={{ marginTop: '20px', maxWidth: '100%', maxHeight: '600px', borderRadius: '10px' }}
-                />
+                    style={{ marginTop: '20px', maxWidth: '100%', maxHeight: '600px', borderRadius: '10px' }} 
+                    />
+                <LikeButton />
+                </>
             )}
             {!loading && imageURL && highQuality && (
+                <>
+
                 <img
                     src={imageURL}
                     alt={category}
                     style={{ marginTop: '20px', maxWidth: '100%', maxHeight: '600px', borderRadius: '10px' }}
                 />
+                <LikeButton/>
+                </>
             )}
+
+            
         </>
     );
 }

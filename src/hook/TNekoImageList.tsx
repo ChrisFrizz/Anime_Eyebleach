@@ -1,12 +1,12 @@
 export type TNekoImageList = INekoImage[]
 
 export interface INekoImage {
-  "success": Boolean,
-  "status": number,
-  "key": undefined | string,
-  "count": number,
-  "id": string,
-  "colors": { 
+  "success"?: Boolean,
+  "status"?: number,
+  "key"?: undefined | string,
+  "count"?: number,
+  "id"?: string,
+  "colors"?: { 
     "main": "#Hex", 
     "palette": [
       "#Hex1", "#Hex2", "#Hex3", "#Hex4", "#Hex5", 
@@ -23,24 +23,24 @@ export interface INekoImage {
       "extension": string 
     }
   },
-  "metadata": { 
+  "metadata"?: { 
     "original": { 
       "width": number, 
       "height": number, 
       "size": number, 
       "extension": string 
     }, 
-    "compressed": { 
+    "compressed"?: { 
       "width": number, 
       "height": number, 
       "size": number, 
       "extension": string 
     } 
   },
-  "category": string,
+  "category"?: string,
   "tags": string[],
-  "rating": "safe" | "suggestive",
-  "anime": { 
+  "rating"?: "safe" | "suggestive",
+  "anime"?: { 
     "title": string | null, 
     "character": string | null 
   },

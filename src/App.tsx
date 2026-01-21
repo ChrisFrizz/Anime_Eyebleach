@@ -4,7 +4,6 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import RandomImage from './pages/RandomImage';
-import SearchByTag from './pages/SearchByTag';
 import MyCollection from './pages/MyCollection';
 
 
@@ -29,7 +28,6 @@ function App(){
         <nav>
           <Link to='/home'>Home</Link>
           <Link to='/randomImage'>Random Image</Link>
-          <Link to='/searchByTag'>Search By Tag</Link>
           <Link to='/login'>Login</Link>
           <Link to='/mycollection'>My Collection</Link>
         </nav>
@@ -37,7 +35,6 @@ function App(){
         <Routes>
           <Route path='/home' element={<Home/>}/>
           <Route path='/randomImage' element={<RandomImage/>}/>
-          <Route path='/searchByTag' element={<SearchByTag/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/mycollection' element={<MyCollection/>}/>
           </Routes>

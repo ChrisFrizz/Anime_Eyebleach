@@ -5,7 +5,7 @@ export default function LikeButton(){
     const [liked, setLiked] = useState(localStorage.getItem('liked') === 'true' || false);
 
     useEffect(()=>{
-        localStorage.setItem('liked', liked.toString());
+        localStorage.setItem('liked', JSON.stringify(liked));
     }, [liked]);
 
     function handleLike(){
@@ -14,7 +14,9 @@ export default function LikeButton(){
 
     return (
         <div>
-            <button onClick={handleLike}></button>
+            <button style={{ margin: "20px", backgroundColor: liked ? "red" : "white", color: liked ? "white" : "black" }} onClick={handleLike}>
+                {liked ? "❤️Liked" : "🤍Like"}
+            </button>
         </div>
     )
 }
