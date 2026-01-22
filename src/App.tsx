@@ -31,14 +31,15 @@ function App(){
           <Link to='/randomImage'>Random Image</Link>
           <Link to='/login'>Login</Link>
           <Link to='/mycollection'>My Collection</Link>
+          <Link to='/404'>404 Page</Link>
         </nav>
 
         <Routes>
-          <Route path='/home' element={<Home/>}/>
+          <Route path='/*' element={<Home/>}/>
           <Route path='/randomImage' element={<RandomImage/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/mycollection' element={<MyCollection/>}/>
-          <Route path='*' element={<PageNotFound/>}/>
+          <Route path='/404' element={<PageNotFound/>}/>
           </Routes>
       </BrowserRouter>
 

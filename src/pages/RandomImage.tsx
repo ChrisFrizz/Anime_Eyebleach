@@ -16,7 +16,7 @@ export default function RandomImage() {
         setError(null);
 
         try {
-            const res = await axios.get('https://api.nekosia.cat/api/v1/images/catgirl');
+            const res = await axios.get('https://api.nekosia.cat/api/v1/images/random');
             setImageURL(res.data.image.original.url);
             setImageURLCompressed(res.data.image.compressed.url);
             setCategory(res.data.category);
@@ -48,7 +48,7 @@ export default function RandomImage() {
                     console.log(imageURLCompressed);
                 }}
                 >
-            Random Neko Image
+            Random Image
             </button>
             </div>
             
@@ -74,7 +74,10 @@ export default function RandomImage() {
                     alt={category}
                     style={{ marginTop: '20px', maxWidth: '100%', maxHeight: '600px', borderRadius: '10px' }} 
                     />
-                <LikeButton imageUrl={imageURLCompressed} />
+                <div style={{ marginTop: '10px' }}>
+                    <LikeButton imageUrl={imageURLCompressed} />
+                </div>
+                
                 </>
             )}
             {!loading && imageURL && highQuality && (
@@ -85,7 +88,10 @@ export default function RandomImage() {
                     alt={category}
                     style={{ marginTop: '20px', maxWidth: '100%', maxHeight: '600px', borderRadius: '10px' }}
                 />
-                <LikeButton imageUrl={imageURL} />
+
+                <div style={{ marginTop: '10px' }}>
+                    <LikeButton imageUrl={imageURLCompressed} />
+                </div>
                 </>
             )}       
         </>

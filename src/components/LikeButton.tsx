@@ -19,11 +19,11 @@ export default function LikeButton({ imageUrl }: Props) {
   };
 
   return (
-    
     <button
       onClick={handleLike}
     >
       {isLiked ? 'Liked' : 'Like'}
     </button>
+    
   );
 };
