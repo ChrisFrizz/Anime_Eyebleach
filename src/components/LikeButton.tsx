@@ -1,22 +1,29 @@
-import { useEffect, useState } from "react"
+import { useState, useEffect } from 'react';
+import { getFavorites, toggleFavorite } from './Favorites';
 
-export default function LikeButton(){
-
-    const [liked, setLiked] = useState(localStorage.getItem('liked') === 'true' || false);
-
-    useEffect(()=>{
-        localStorage.setItem('liked', JSON.stringify(liked));
-    }, [liked]);
-
-    function handleLike(){
-        setLiked(!liked);
-    }
-
-    return (
-        <div>
-            <button style={{ margin: "20px", backgroundColor: liked ? "red" : "white", color: liked ? "white" : "black" }} onClick={handleLike}>
-                {liked ? "❤️Liked" : "🤍Like"}
-            </button>
-        </div>
-    )
+interface Props {
+  imageUrl: string;
 }
+
+export default function LikeButton({ imageUrl }: Props) {
+  const [isLiked, setIsLiked] = useState(false);
+
+  useEffect(() => {
+    const favorites = getFavorites();
+    setIsLiked(favorites.includes(imageUrl));
+  }, [imageUrl]);
+
+  const handleLike = () => {
+    const status = toggleFavorite(imageUrl);
+    setIsLiked(status);
+  };
+
+  return (
+    
+    <button
+      onClick={handleLike}
+    >
+      {isLiked ? 'Liked' : 'Like'}
+    </button>
+  );
+};

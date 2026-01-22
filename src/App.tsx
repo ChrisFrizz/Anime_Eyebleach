@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import RandomImage from './pages/RandomImage';
 import MyCollection from './pages/MyCollection';
+import PageNotFound from './pages/PageNotFound';
 
 
 const client = new QueryClient({
@@ -37,6 +38,7 @@ function App(){
           <Route path='/randomImage' element={<RandomImage/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/mycollection' element={<MyCollection/>}/>
+          <Route path='*' element={<PageNotFound/>}/>
           </Routes>
       </BrowserRouter>
 

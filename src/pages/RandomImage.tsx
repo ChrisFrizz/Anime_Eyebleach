@@ -10,8 +10,6 @@ export default function RandomImage() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [highQuality, setHighQuality] = useState(false);
-    const [URLSavedCompressed, setURLSavedCompressed] = useState([]);
-    const [URLSaved, setURLSaved] = useState([]);
 
     const fetchNekoImage = async () => {
         setLoading(true);
@@ -20,8 +18,6 @@ export default function RandomImage() {
         try {
             const res = await axios.get('https://api.nekosia.cat/api/v1/images/catgirl');
             setImageURL(res.data.image.original.url);
-            setURLSaved(res.data.image.original.url);
-            setURLSavedCompressed(res.data.image.compressed.url);
             setImageURLCompressed(res.data.image.compressed.url);
             setCategory(res.data.category);
             setHighQuality(false);
@@ -47,32 +43,38 @@ export default function RandomImage() {
                     padding: '5px 20px', 
                     fontSize: '16px',
                 }}
-                onClick={fetchNekoImage}>
+                onClick={() => {
+                    fetchNekoImage();
+                    console.log(imageURLCompressed);
+                }}
+                >
             Random Neko Image
             </button>
             </div>
-
-            <div style={{ height: '20px', marginBottom: '30px' }}>
+            
+            {imageURLCompressed && imageURLCompressed.length === 0 && <p>Nessuna immagine con questo URL</p>}
+            {!loading && imageURLCompressed && !highQuality && (
+                <>
+                <div style={{ height: '20px', marginBottom: '30px' }}>
                 <button style={{ 
                     marginTop: '20px',
                     marginBottom: '20px',
                     padding: '5px 20px', 
                     fontSize: '16px',
                 }}
-                onClick={()=>{setHighQuality(true)}}>
-                High Quality
+                onClick={()=>{
+                    setHighQuality(true)
+                    console.log(imageURL);
+                    }}>
+                High Quality?
                 </button>
             </div>
-            
-            {imageURLCompressed && imageURLCompressed.length === 0 && <p>Nessuna immagine con questo URL</p>}
-            {!loading && imageURLCompressed && !highQuality && (
-                <>
                 <img
                     src={imageURLCompressed}
                     alt={category}
                     style={{ marginTop: '20px', maxWidth: '100%', maxHeight: '600px', borderRadius: '10px' }} 
                     />
-                <LikeButton />
+                <LikeButton imageUrl={imageURLCompressed} />
                 </>
             )}
             {!loading && imageURL && highQuality && (
@@ -83,11 +85,9 @@ export default function RandomImage() {
                     alt={category}
                     style={{ marginTop: '20px', maxWidth: '100%', maxHeight: '600px', borderRadius: '10px' }}
                 />
-                <LikeButton/>
+                <LikeButton imageUrl={imageURL} />
                 </>
-            )}
-
-            
+            )}       
         </>
     );
 }

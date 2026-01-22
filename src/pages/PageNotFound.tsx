@@ -6,7 +6,7 @@ export default function PageNotFound(){
 
     return (
     <>
-        <h1>404 Not Found</h1>;
+        <h1>404 Not Found</h1>
         <button onClick={() =>{nav('/home')}}>Back to Home</button>
     </>
     );
