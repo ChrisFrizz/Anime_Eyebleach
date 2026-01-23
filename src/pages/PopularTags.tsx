@@ -9,13 +9,15 @@ export default function PopularTags() {
     const [imageURL, setImageURL] = useState("");
     const [imageURLCompressed, setImageURLCompressed] = useState("");
     const [highQuality, setHighQuality] = useState(false);
+    const [category, setCategory] = useState("");
 
     const { data, isLoading, error } = useQuery<INekosiaResponse>({
         enabled: enabled,
         queryKey: ['images'],
-        queryFn: async () => await fetch("https://api.nekosia.cat/api/v1/images/random")
+        queryFn: async () => await fetch('https://api.nekosia.cat/api/v1/images/catgirl')
             .then(data => data.json())
     });
+
 
     if (isLoading) return <h3>Caricamento in corso</h3>
     if (error) return <h3>Si è verificato un errore: {error.message}</h3>
@@ -23,7 +25,9 @@ export default function PopularTags() {
     return (
         <>
             <h1>Here are the most popular tags:</h1>
-            <button onClick={() => {
+            <button style={{marginRight:'10px'}}
+            
+            onClick={() => {
                 setEnabled(true);
                 if (data) {
                     setImageURLCompressed(data.image.compressed.url);
@@ -34,7 +38,9 @@ export default function PopularTags() {
                 catgirl
             </button>
 
-            <button onClick={() => {
+            <button
+                style={{marginRight:'10px', marginTop:'10px'}}
+                onClick={() => {
                 setEnabled(true);
                 if (data) {
                     setImageURLCompressed(data.image.compressed.url);
@@ -45,7 +51,9 @@ export default function PopularTags() {
                 foxgirl
             </button>
 
-            <button onClick={() => {
+            <button 
+            style={{marginRight:'10px', marginTop:'10px'}}
+            onClick={() => {
                 setEnabled(true);
                 if (data) {
                     setImageURLCompressed(data.image.compressed.url);
@@ -56,7 +64,9 @@ export default function PopularTags() {
                 maid
             </button>
 
-            <button onClick={() => {
+            <button 
+            style={{marginRight:'10px', marginTop:'10px'}}
+            onClick={() => {
                 setEnabled(true);
                 if (data) {
                     setImageURLCompressed(data.image.compressed.url);
@@ -67,7 +77,9 @@ export default function PopularTags() {
                 waifu
             </button>
 
-            <button onClick={() => {
+            <button 
+            style={{marginRight:'10px', marginTop:'10px'}}
+            onClick={() => {
                 setEnabled(true);
                 if (data) {
                     setImageURLCompressed(data.image.compressed.url);
@@ -78,7 +90,9 @@ export default function PopularTags() {
                 neko
             </button>
 
-            <button onClick={() => {
+            <button 
+            style={{marginRight:'10px', marginTop:'10px'}}
+            onClick={() => {
                 setEnabled(true);
                 if (data) {
                     setImageURLCompressed(data.image.compressed.url);
@@ -89,7 +103,9 @@ export default function PopularTags() {
                 cute
             </button>
 
-            <button onClick={() => {
+            <button 
+            style={{marginRight:'10px', marginTop:'10px'}}
+            onClick={() => {
                 setEnabled(true);
                 if (data) {
                     setImageURLCompressed(data.image.compressed.url);
@@ -100,7 +116,9 @@ export default function PopularTags() {
                 animal ears
             </button>
 
-            <button onClick={() => {
+            <button 
+            style={{marginRight:'10px', marginTop:'10px'}}
+            onClick={() => {
                 setEnabled(true);
                 if (data) {
                     setImageURLCompressed(data.image.compressed.url);
@@ -111,7 +129,9 @@ export default function PopularTags() {
                 cat ears
             </button>
 
-            <button onClick={() => {
+            <button 
+            style={{marginRight:'10px', marginTop:'10px'}}
+            onClick={() => {
                 setEnabled(true);
                 if (data) {
                     setImageURLCompressed(data.image.compressed.url);
@@ -122,7 +142,9 @@ export default function PopularTags() {
                 white hair
             </button>
 
-            <button onClick={() => {
+            <button 
+            style={{marginRight:'10px', marginTop:'10px'}}
+            onClick={() => {
                 setEnabled(true);
                 if (data) {
                     setImageURLCompressed(data.image.compressed.url);
@@ -133,7 +155,9 @@ export default function PopularTags() {
                 thigh-high socks
             </button>
 
-            <button onClick={() => {
+            <button 
+            style={{marginRight:'10px', marginTop:'10px'}}
+            onClick={() => {
                 setEnabled(true);
                 if (data) {
                     setImageURLCompressed(data.image.compressed.url);
@@ -144,7 +168,9 @@ export default function PopularTags() {
                 v-tuber
             </button>
 
-            <button onClick={() => {
+            <button 
+            style={{marginRight:'10px', marginTop:'10px'}}
+            onClick={() => {
                 setEnabled(true);
                 if (data) {
                     setImageURLCompressed(data.image.compressed.url);
@@ -155,7 +181,9 @@ export default function PopularTags() {
                 tail with ribbon
             </button>
 
-            <button onClick={() => {
+            <button 
+            style={{marginRight:'10px', marginTop:'10px'}}
+            onClick={() => {
                 setEnabled(true);
                 if (data) {
                     setImageURLCompressed(data.image.compressed.url);
@@ -166,7 +194,9 @@ export default function PopularTags() {
                 school uniform
             </button>
 
-            <button onClick={() => {
+            <button 
+            style={{marginRight:'10px', marginTop:'10px'}}
+            onClick={() => {
                 setEnabled(true);
                 if (data) {
                     setImageURLCompressed(data.image.compressed.url);
