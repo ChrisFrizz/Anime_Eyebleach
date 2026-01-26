@@ -1,10 +1,8 @@
 //import { useQuery } from "@tanstack/react-query"
 //import type { INekosiaResponse } from "../hook/INekosiaResponse";
-//import type { INekoImage } from "../hook/TNekoImageList";
 import { useState } from "react";
 import LikeButton from "../components/LikeButton";
 import axios from "axios";
-
 
 export default function PopularTags() {
 
@@ -20,6 +18,8 @@ export default function PopularTags() {
             .then(data => data.json())
     });*/
 
+    if (loading) return <h3>Caricamento in corso</h3>
+    if (err) return <h3>Si è verificato un errore: {err}</h3>
 
     async function fetchImage(value: string) {
         setLoading(true);
@@ -33,14 +33,10 @@ export default function PopularTags() {
             console.log(imageURLCompressed);
         } catch (err: any) {
             console.error("Error fetching image:", err.message);
-        } finally {
+        } finally{
             setLoading(false);
         }
     }
-
-    if (loading) return <h3>Caricamento in corso</h3>
-    if (err) return <h3>Si è verificato un errore: {err}</h3>
-
 
     /*type APIAlias = string;
 

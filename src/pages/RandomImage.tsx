@@ -19,7 +19,7 @@ export default function RandomImage() {
             setImageURL(res.data.image.original.url);
             setImageURLCompressed(res.data.image.compressed.url);
             setHighQuality(false);
-            console.log(setImageURLCompressed);
+            console.log(imageURLCompressed);
         } catch (err: any) {
             setError(err.message);
             console.error("Error fetching image:", err.message);
