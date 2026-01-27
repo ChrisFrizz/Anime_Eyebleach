@@ -1,56 +1,27 @@
-import axios from "axios";
 import { useState } from "react";
 import LikeButton from "../components/LikeButton";
+import { useQuery } from "@tanstack/react-query";
 
 export default function RandomImage() {
 
-    const [imageURL, setImageURL] = useState("");
-    const [imageURLCompressed, setImageURLCompressed] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
     const [highQuality, setHighQuality] = useState(false);
 
-    const fetchNekoImage = async () => {
-        setLoading(true);
-        setError(null);
+    const { data, isLoading, error } = useQuery({
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
+        queryKey: ["Image"],
+        queryFn: async () => await fetch('https://api.nekosia.cat/api/v1/images/random')
+            .then(data => data.json())
+    });
 
-        try {
-            const res = await axios.get('https://api.nekosia.cat/api/v1/images/random');
-            setImageURL(res.data.image.original.url);
-            setImageURLCompressed(res.data.image.compressed.url);
-            setHighQuality(false);
-            console.log(imageURLCompressed);
-        } catch (err: any) {
-            setError(err.message);
-            console.error("Error fetching image:", err.message);
-        } finally {
-            setLoading(false);
-        }
-    };
+    if (isLoading) return <h3>Caricamento in corso</h3>;
+    if (error) return <h3>Si è verificato un errore: {(error as Error).message}</h3>;
 
-    if (loading) return <h3>Caricamento in corso</h3>
-    if (error) return <h3>Si è verificato un errore: {error}</h3>
+    if (!data || !data.image) return null;
 
     return (
         <>
-            <div style={{ height: '20px', marginBottom: '30px' }}>
-                <button
-                    style={{
-                        marginTop: '20px',
-                        marginBottom: '20px',
-                        padding: '5px 20px',
-                        fontSize: '16px',
-                    }}
-                    onClick={() => {
-                        fetchNekoImage();
-                        console.log(imageURLCompressed);
-                    }}
-                >
-                    Random Image
-                </button>
-            </div>
-
-            {!loading && imageURLCompressed && !highQuality && (
+            {data && !highQuality && (
                 <>
                     <div style={{ height: '20px', marginBottom: '30px' }}>
                         <button style={{
@@ -60,23 +31,30 @@ export default function RandomImage() {
                             fontSize: '16px',
                         }}
                             onClick={() => {
-                                setHighQuality(true)
-                                console.log(imageURL);
+                                setHighQuality(true);
                             }}>
                             High Quality?
                         </button>
                     </div>
+
                     <img
-                        src={imageURLCompressed}
-                        style={{ marginTop: '20px', maxWidth: '100%', maxHeight: '600px', borderRadius: '10px' }}
+                        src={data.image.compressed.url}
+                        style={{
+                            marginTop: '20px',
+                            maxWidth: '100%',
+                            maxHeight: '600px',
+                            borderRadius: '10px'
+                        }}
                     />
+
                     <div style={{ marginTop: '10px' }}>
-                        <LikeButton imageUrl={imageURLCompressed} />
+                        <LikeButton imageUrl={data.image.compressed.url} />
                     </div>
 
                 </>
             )}
-            {!loading && imageURL && highQuality && (
+
+            {data && highQuality && (
                 <>
                     <div style={{ height: '20px', marginBottom: '30px' }}>
                         <button style={{
@@ -86,20 +64,21 @@ export default function RandomImage() {
                             fontSize: '16px',
                         }}
                             onClick={() => {
-                                setHighQuality(false);
-                                console.log(imageURLCompressed);
+                                setHighQuality(false)
                             }}>
                             Lower Quality?
                         </button>
                     </div>
 
-                    <img
-                        src={imageURL}
-                        style={{ marginTop: '20px', maxWidth: '100%', maxHeight: '600px', borderRadius: '10px' }}
-                    />
+                    <div>
+                        <img
+                            style={{ marginTop: '20px', maxWidth: '100%', maxHeight: '600px', borderRadius: '10px' }}
+                            src={data.image.original.url}
+                        />
+                    </div>
 
                     <div style={{ marginTop: '10px' }}>
-                        <LikeButton imageUrl={imageURLCompressed} />
+                        <LikeButton imageUrl={data.image.original.url} />
                     </div>
                 </>
             )}

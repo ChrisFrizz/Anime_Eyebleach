@@ -7,7 +7,7 @@ import RandomImage from './pages/RandomImage';
 import MyCollection from './pages/MyCollection';
 import PageNotFound from './pages/PageNotFound';
 import PopularTags from './pages/PopularTags';
-import Post from './components/Post';
+import Post from './pages/Post';
 
 
 const client = new QueryClient({

@@ -1,5 +1,3 @@
-//import { useQuery } from "@tanstack/react-query"
-//import type { INekosiaResponse } from "../hook/INekosiaResponse";
 import { useState } from "react";
 import LikeButton from "../components/LikeButton";
 import axios from "axios";
@@ -11,12 +9,6 @@ export default function PopularTags() {
     const [highQuality, setHighQuality] = useState(false);
     const [loading, setLoading] = useState(false);
     const [err, setErr] = useState<string | null>(null);
-
-    /*const { data, isLoading, error } = useQuery<INekosiaResponse>({
-        queryKey: ['images'],
-        queryFn: async () => await fetch('https://api.nekosia.cat/api/v1/images/cute?count=1&additionalTags=white-hair,uniform&blacklistedTags=short-hair,sad,maid')
-            .then(data => data.json())
-    });*/
 
     if (loading) return <h3>Caricamento in corso</h3>
     if (err) return <h3>Si è verificato un errore: {err}</h3>
@@ -37,26 +29,6 @@ export default function PopularTags() {
             setLoading(false);
         }
     }
-
-    /*type APIAlias = string;
-
-    async function APIRequest<T>(url: APIAlias): Promise<T> {
-        const response = await axios.get<T>(url);
-        return response.data;
-    }
-
-    async function fetchImageAlias(value: APIAlias) {
-        try {
-            const data = await APIRequest<INekoImage>(value);
-            setImageURL(data.image.original.url);
-            setImageURLCompressed(data.image.compressed.url);
-            setHighQuality(false);
-            console.log(imageURLCompressed);
-            
-        } catch (err: any) {
-            console.error("Something went wrong:", err.message);
-        }
-    }*/
 
     return (
         <>

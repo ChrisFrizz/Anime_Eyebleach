@@ -1,16 +1,17 @@
-type ImageVersion = {
-  url: string;
-  extension: string;
-};
-
 
 export interface INekosiaResponse {
   success: boolean;
   status: number;
   id: string;
   image: {
-    original: ImageVersion;
-    compressed: ImageVersion;
+    original: {
+      url: string;
+      extension: string;
+    }
+    compressed: {
+      url: string;
+      extension: string;
+    };
   };
   tags?: string[];
   rating?: "safe" | "suggestive";
