@@ -16,6 +16,6 @@ export const toggleFavorite = (url: string): boolean => {
     isNowLiked = false;
   }
 
-  localStorage.setItem('nekosia_favorites', JSON.stringify(favorites));
+  localStorage.setItem('favoriteImages', JSON.stringify(favorites));
   return isNowLiked;
 };

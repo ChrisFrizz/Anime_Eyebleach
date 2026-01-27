@@ -5,7 +5,7 @@ interface URL {
   imageUrl: string;
 }
 
-export default function LikeButton({ imageUrl }: URL) {
+export default function LikeButton({imageUrl}: URL) {
   const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
