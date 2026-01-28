@@ -31,15 +31,19 @@ Clone the Repository
 
     git clone https://github.com/ChrisFrizz/Anime_Eyebleach.git
 
+-----
 
 Go in the downloaded repository
 
     cd Anime_Eyebleach
 
-    
+-----
+
 Ensure you have Node.js installed, then run:
 
     npm install
+
+-----
 
 Launch Development Server
 
