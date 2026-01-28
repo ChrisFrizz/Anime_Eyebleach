@@ -13,7 +13,7 @@ It serves as a school study project in modern frontend practices, specifically h
 
 ### Installation and Execution Instructions
 
-Dowload the Repository
+1) Dowload the Repository
 
 ● Download the ZIP. file by clicking on <>Code
 
@@ -25,31 +25,31 @@ OR
 
 -----
 
-Clone the Repository
+1) Clone the Repository
 
 ● Go into your command prompt/Linux terminal and digit
-
+```
     git clone https://github.com/ChrisFrizz/Anime_Eyebleach.git
-
+```
 -----
 
-Go in the downloaded repository
-
+2) Go in the downloaded repository
+```
     cd Anime_Eyebleach
-
+```
 -----
 
-Ensure you have Node.js installed, then run:
-
+3) Ensure you have Node.js installed, then run:
+```
     npm install
-
+```
 -----
 
-Launch Development Server
-
+4) Launch Development Server
+```
     npm run dev
-
-The application will load a localHost to then click on.
+```
+5) The application will load a localHost to then click on.
 
 -----
 
