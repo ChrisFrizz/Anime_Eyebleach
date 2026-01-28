@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
  * 
  * @import react-router-dom
  * 
- * @constant useNavigate per navigare attraverso le pagine della SPA
+ * @constant useNavigate to navigate through the SPA pages
  * 
- * @returns bottone per navigazione a HomePage
+ * @returns Home navigation button
  */
 
 export default function PageNotFound(){

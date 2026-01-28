@@ -4,10 +4,10 @@ import axios from "axios";
 import { TagButton } from "../components/TagButton";
 
 /**
- * @constant Lista di Tag di cui creare un bottone attraverso TagButton.tsx
+ * @constant List of tags to create a button (see TagButton.tsx) 
  * 
- * @param TAG = nome del tag
- * @param url = cosa scrivere alla fine del url
+ * @param TAG = tag name
+ * @param url = what to write at the end of the URL
  */
 
 const TagList = [
@@ -41,19 +41,20 @@ const TagList = [
 ];
 
 /**
- * @function PopularTags crea una lista di bottoni da cliccare per chiamare una funzione GET usando axios
+ * @function PopularTags create a list of buttons to click and call a GET function using axios
  * 
- * @import libreria axios per chiamate GET, anche da button onClick, senza caricare immediatamente a mount
+ * @import axios library for GET calls, without immediately loading onComponentMount
  * 
- * @const imageURL (HD) / imageURLCompressed (!HD) e highQuality (bool) cambiano tra alta e bassa qualità immagine
+ * @const imageURL (HD) / imageURLCompressed (!HD) and highQuality (bool) toggle between high and low image quality
  * 
- * @async fetchImage prende in input il tagURL da poi aggiungere alla fine per la chiamata GET
+ * @async fetchImage takes the tagURL as input and then adds it to the end for the GET call
  * 
- * @returns Lista di bottoni per tag più "popolari"
- *          Cliccato un bottone si caricano i pulsanti per aumentare risoluzione e salvare immagine su localStorage
- *          Carica immagine da chiamata GET
+ * @returns List of buttons for the most "popular" tags
+ *          When a button is clicked, the buttons for increasing resolution and saving the image to localStorage are loaded
+ *          Load image from a GET call
  * 
- *          Cliccato bottone per aumentare risoluzione, carica bottoni per tornare in bassa e salvare immagine
+ *          When the button to increase resolution is clicked, 
+ *                          the button to return to low resolution and saving the image are loaded
  */
 
 export default function PopularTags() {

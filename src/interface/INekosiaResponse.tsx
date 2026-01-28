@@ -1,5 +1,5 @@
 /**
- * @interface di risposta dell'API
+ * @interface API response
  */
 
 export interface INekosiaResponse {

@@ -3,19 +3,19 @@ import LikeButton from "../components/LikeButton";
 import { useQuery } from "@tanstack/react-query";
 
 /**
- * GET di un'immagine randomica dall'API a mount del componente usando useQuery
+ * GET of a random image from the API onComponentMount using useQuery
  * 
- * @const highQuality boolean controlla le dimensioni dell'immagine da caricare
- * @const data è la risposta alla query, isLoading ed error di controllo,
+ * @const highQuality boolean controls the size of the image to load
+ * @const data is the response to the query, isLoading and error to control,
  *  
- *            OnWindowsFocus & Onreconnect per non richiamare fetch quando si riduce a icona 
- *              o a riconnessione con internet / quando data è vecchio
+ *             OnWindowsFocus & Onreconnect to not refetch when minimizing to icon
+ *                            or when reconnecting to the internet / when data is old
  * 
- * @returns bottone per settare qualità migliore, usando original URL nella risposta JSON, se esiste data
- *          immagine da chiamata GET caricata automaticamente 
- *          bottone per salvare immagine su localStorage (vedi LikeButton.tsx)
+ * @returns button to set higher resolution, using the URL in the JSON response, if data exists
+ *          image from GET call automatically loaded
+ *          button to save image to localStorage (see LikeButton.tsx)
  *          
- *          se cliccato il bottone highQuality, carica il bottone per tornare indietro a qualità inferiore
+ *          if the highQuality button is clicked, loads the button to revert to lower resolution
  */
 
 export default function RandomImage() {

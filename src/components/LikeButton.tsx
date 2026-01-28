@@ -6,14 +6,14 @@ interface URL {
 }
 
 /**
- * @function LikeButton componente riutilizzabile per salvare immagini
- * @param imageUrl è l'url dell'immagine da salvare in localStorage
+ * @function LikeButton reusable component for saving images
+ * @param imageUrl is the URL of the image to save into localStorage
  * 
- * useEffect prende l'URL dell'immagine e lo aggiunge alla lista (vedi Favorites.tsx)
- * handleLike (vedi Favorites.tsx)
+ * useEffect takes the image URL and adds it to the list (see Favorites.tsx)
+ * handleLike (see Favorites.tsx)
  * 
- * @returns bottone del like che aggiorna localStorage e il suo testo in automatico 
- */
+ * @returns Like button that automatically updates its text and localStorage
+*/
 
 export default function LikeButton({imageUrl}: URL) {
   const [isLiked, setIsLiked] = useState(false);

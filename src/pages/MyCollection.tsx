@@ -4,18 +4,18 @@ import { useNavigate, useLocation, type Location } from 'react-router-dom';
 import type { ILoginNavigateState } from './Login';
 
 /**
- * @function FavoritesPage collezione di immagini salvate in localStorage, dietro a un login
+ * @function FavoritesPage collection of images saved in localStorage, after a login
  * 
  * @import react-router-dom
  * 
- * @const location e navigate si occupano di controllare se è stato effettuato il login 
- *                            e reindirizzare sulla pagina appropriata (vedi Login.tsx)
+ * @const location and navigate checks whether a login has been made
+ *                              and redirects to the appropriate page (see Login.tsx) 
  * 
- * @const favorites prende le immagini salvate nel localStorage
- * @const savedImages è la lista che può essere controllata per vedere il numero e agire di conseguenza
+ * @const favorites gets the images saved in localStorage
+ * @const savedImages this is the list that will be checked to see the amount of images and act accordingly
  * 
- * @returns controllo su savedImages, se non sono state aggiunte immagini mostra il messaggio
- *                                    altrimenti mostra la lista di immagini con gli stili associati
+ * @returns check savedImages; if no images have been added, it displays a message
+ *                             otherwise, it displays the list of images with the associated styles
  */
 
 export default function FavoritesPage() {
@@ -43,7 +43,7 @@ export default function FavoritesPage() {
       ) : (
         <div>
           {savedImages.map((url) => (
-            <div key={url}>
+            <div>
               <img
                 src={url}
                 alt="Favorite"

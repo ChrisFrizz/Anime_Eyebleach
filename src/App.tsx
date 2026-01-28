@@ -20,7 +20,7 @@ const client = new QueryClient({
 });
 
 /**
- * App con routing delle pagine
+ * App with the routing to the pages
  */
 
 

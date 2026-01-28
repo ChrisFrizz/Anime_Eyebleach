@@ -1,9 +1,9 @@
 /**
- * @interface bottone dei tag
+ * @interface TagButton
  * 
- * @param tag = nome del tag
- * @param tagURL = cosa mettere alla fine del URL per chiamata API corretta
- * @function onFetch = qui si inserisce la funzione per fare Fetch (vedi PopularTags.tsx)
+ * @param tag = tag name
+ * @param tagURL = what to put at the end of the URL for a correct API call
+ * @function onFetch = this is where the Fetch function is entered (see PopularTags.tsx)
  */
 
 interface TagButton {
@@ -13,11 +13,11 @@ interface TagButton {
 }
 
 /**
- * Componente per creazione bottoni
+ * Button Creation Component
  * @param tag, tagURL
  * @function onFetch
  * 
- * @returns creazione di bottoni con stile definito e onClick
+ * @returns styled buttons creation and onClick effect
  */
 
 export const TagButton = ({ tag, tagURL, onFetch }: TagButton) => {

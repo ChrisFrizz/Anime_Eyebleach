@@ -3,9 +3,9 @@ import { useState } from 'react';
 /**
  * @interface PostData
  * 
- * @param URL da inserire in barra di testo
- * @param TAGS per lista di tags
- * @param SAFE per indicare se SFW o NSFW
+ * @param URL to be inserted in the text bar
+ * @param TAGS for the tag list
+ * @param SAFE to show whether SFW or NSFW
  */
 
 interface PostData {
@@ -15,19 +15,19 @@ interface PostData {
 }
 
 /**
- * @function Post simula chiamata POST a un API
+ * @function Post simulates a POST call to an API
  * 
- * @const status è il feedback della chiamata POST
- * @const color, clickCount e SFWText controllano come si comporta il bottone SFW
- *           color prima neutro passa a verde o rosso
- *           clickCount controlla lo stato in cui passare in base a se %2 == 0 o no
- *           SFWText è il testo da caricare sul bottone con ✅ e ❌ per accessibilità
+ * @const status is the feedback from the POST call
+ * @const color, clickCount and SFWText control how the SFW button behaves
+ *               color, previously neutral, changes to green or red
+ *               clickCount controls the state to switch to based on whether %2 == 0 or not
+ *               SFWText is the text to load on the button, with ✅ and ❌ for accessibility
  * 
- * @async handleSubmit si occupa della POST call
+ * @async handleSubmit handles the POST call
  * 
- * @returns 2 sezioni di input per URL e lista tag da applicare
- *          bottone SFW che cambia colore e testo in base al numero di click
- *          bottone per "mandare" chiamata POST
+ * @returns 2 input sections for the URL and a list of tags to apply
+ *          SFW button that changes color and text based on the number of clicks
+ *          button to "send" the POST call with the feedback of the end result
  */
 
 export default function Post() {

@@ -1,9 +1,9 @@
 import background from '../background/background.jpg'
 
 /**
- * HomePage del sito
- * @constant containerStyle = lista di modificatori da applicare al background
- * @returns h1 di benvenuto nel sito
+ * HomePage of the site
+ * @constant containerStyle = list of modifiers to apply to the background
+ * @returns h1 welcome to the site
  */
 
 export default function Home() {

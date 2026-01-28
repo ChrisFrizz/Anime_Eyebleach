@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 /**
  * @interface ILoginNavigateState
- * @param username da' il nome con cui chiamiamo l'user
+ * @param username provides the name we use to call the user.
  */
 
 export interface ILoginNavigateState{
@@ -11,15 +11,15 @@ export interface ILoginNavigateState{
 }
 
 /**
- * @function Login gestisce il login dell'utente al sito
+ * @function Login manages the user's login to the site.
  * 
  * @import react-router-dom
  * 
- * @constant navigate è il posto dove si reindirizza l'user
+ * @constant navigate it's the place where the user is redirected.
  * 
- * @function handleSubmit reindirizza alla collezione dopo aver completato il login
+ * @function handleSubmit redirects to the collection after sending the form
  * 
- * @returns form di login con username e bottone per mandare form
+ * @returns login form with username and submit button.
  */
 
 export default function Login(){

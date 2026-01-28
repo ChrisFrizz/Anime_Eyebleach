@@ -1,7 +1,7 @@
 /**
- * @const getFavorites controlla localStorage per prendere gli item nello storage
+ * @const getFavorites checks localStorage to retrieve items
  * 
- * @returns data con la lista di url delle immagini salvate
+ * @returns data with the list of URLs of the saved images
  * 
  */
 
@@ -11,15 +11,15 @@ export const getFavorites = (): string[] => {
 };
 
 /**
- * @const toggleFavorite si occupa di mettere la label 'favorite' a un'immagine, quindi salvare il suo url
- * @param url dell'immagine
+ * @const toggleFavorite Tags an image with the 'favorite' label, then saves its URL
+ * @param url
  * 
- * @const index fa da indice e controllo alla lista
- *              se un'immagine viene salvata, index controlla se è presente nella lista
- *              pusha se non è presente e toglie se viene tolto il like
+ * @const index indexes and controls the list
+ *              if an image is saved, index checks if it's present in the list
+ *              pushes if it's not present and removes the item if the like is removed
  * 
  *
- * @returns isNowLiked controlla se l'immagine è stata aggiunta, o se è stata rimossa 
+ * @returns isNowLiked checks if the image has been added or removed, returning true or false respectively 
  */
 
 export const toggleFavorite = (url: string): boolean => {
