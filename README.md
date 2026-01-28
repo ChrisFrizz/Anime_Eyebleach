@@ -1,73 +1,99 @@
-# React + TypeScript + Vite
+Anime Eyebleach
+Project Description and Purpose
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Anime Eyebleach is a React-typescript based web single-page-application designed to show you some beautiful anime inspired images to brighten up after a long day, maybe even find some new artists online that catch your eye and would like your support. 
+"After a long day of seeing what internet anonymity can do to people, you're bound to need some eye bleach." quote by r/eyebleach.
+It serves as a school study project in modern frontend practices, specifically handling asynchronous API data, local persistence, and stateful navigation.
 
-Currently, two official plugins are available:
+Installation and Execution Instructions
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+    Clone the Repository
+    Bash
 
-## React Compiler
+    git clone https://github.com/your-username/anime-eyebleach.git
+    cd anime-eyebleach
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+    Install Dependencies 
+    Ensure you have Node.js installed, then run:
+    Bash
 
-## Expanding the ESLint configuration
+    npm install
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+    Launch Development Server
+    Bash
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+    npm run dev
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+    The application will load a localHost to then click on.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Description of the API Used
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The project utilizes the Nekosia API (v1), a RESTful service that provides structured JSON data for anime images.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Hi there! Are you looking for the perfect API to enhance your project with adorable anime images? Or maybe you're interested in Anime Booru? You're in the right place!
+Nekosia API is a versatile, free, and easy-to-integrate Anime API that offers a wide selection of images, including catgirls, foxgirls, and much more!
+Whether you're building an app, a Discord bot, or a website, Nekosia API has everything you need to add a touch of anime magic to your project.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+🤔 What Does Nekosia API Offer?
+- An extensive collection of fully SFW anime images. See all main categories: https://nekosia.cat/categories
+- API sessions that help avoid duplicate images
+- Dominant colors of images (1 main color + 14 hex codes in each API response)
+- Image compression without loss of quality
+- Every image is tagged, making it easy to find exactly what you're looking for
+- Additionally, we also have our own Anime Booru: https://nekosia.cat/booru
+
+Nekosia API is completely free and available without registration, making it the ideal choice for developers at any skill level. Start exploring the sweetness of nekos today! Meow~~ 😺💗
+
+🌍 Official Nekos Website: https://nekosia.cat
+
+💬 Join our Discord: https://discord.gg/pba76vJhcP
+
+#anime #animeapi #api #cute #catgirl #catgirls #animebooru #booru #neko #nekos #uwu #owo #cuteimages #cuteanimegirls
+
+Also the project utilizes JSONPlaceholder to simulate POST calls.
+
+https://jsonplaceholder.typicode.com/
+
+Credentials / Mocks (if applicable)
+
+    Authentication: The app currently uses a "Soft Login" system. No backend credentials are required; the Login.tsx page captures a username and passes it through the React Router state.
+
+    Mock Endpoint: The Post.tsx page utilizes https://jsonplaceholder.typicode.com/posts to simulate the submission of new community images, providing a safe environment to test POST request logic.
+
+Project Structure
+
+The project follows a component-based architecture organized by responsibility:
+
+    /pages: Contains top-level route components (Home, Login, PopularTags, MyCollection, RandomImage, Post, PageNotFound).tsx
+
+    /components: Reusable UI elements such as LikeButton.tsx and TagButton.tsx
+
+    /logic: Utility files for storage management (Favorites.tsx).
+
+    /interface: API response interface (INekosiaResponse.tsx)
+
+List of Completed Features
+
+    Tag-Based Filtering: Users can load an image by clicking on specific tag button.
+
+    Random Discovery: Automatic fetching of a new image upon loading the RandomImage page.
+
+    Quality Switching: Real-time toggling between high-definition (original) and optimized (compressed) images to save bandwidth.
+
+    Favorites System: Persistent image viewing using localStorage that allows users to "Like" images and view them later in myCollection.
+
+    Dynamic Routing: Implementation of "protected-style navigation" where the myCollection page requires a username from the Login page.
+
+    Optimized Fetching: Integration of tan-stack-query to handle caching and prevent redundant API calls when the window is minimized.
+
+Known issues
+
+    The Login state doesn't persist after changing upon change of route, so every time the user enters myCollection it redirects them to the Login page.
+
+About me: 
+Hello there, I am Chris, italian "programmer" moving its first steps in react based environments. 
+After an INCREADIBLY failed attempt at a d&d character creation react SPA I decided to change the already broken ship's course to this project after scrolling through the free APIs list. 
+Now after basically two weeks and two failed BG3 Honour Mode campaigns, I can release this project that I am proud of.
+So if you scrolled this far and read the entirety of the README, first of: what the hell are you doing, nobody reads this, go find something better to do/better GitHub projects to use; 
+second of all: thank you for your attention and have a wonderful day.
+Chris.
