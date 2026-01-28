@@ -1,10 +1,34 @@
 import { useState } from 'react';
 
+/**
+ * @interface PostData
+ * 
+ * @param URL da inserire in barra di testo
+ * @param TAGS per lista di tags
+ * @param SAFE per indicare se SFW o NSFW
+ */
+
 interface PostData {
     URL: string;
     TAGS: string;
     SAFE: boolean;
 }
+
+/**
+ * @function Post simula chiamata POST a un API
+ * 
+ * @const status è il feedback della chiamata POST
+ * @const color, clickCount e SFWText controllano come si comporta il bottone SFW
+ *           color prima neutro passa a verde o rosso
+ *           clickCount controlla lo stato in cui passare in base a se %2 == 0 o no
+ *           SFWText è il testo da caricare sul bottone con ✅ e ❌ per accessibilità
+ * 
+ * @async handleSubmit si occupa della POST call
+ * 
+ * @returns 2 sezioni di input per URL e lista tag da applicare
+ *          bottone SFW che cambia colore e testo in base al numero di click
+ *          bottone per "mandare" chiamata POST
+ */
 
 export default function Post() {
 

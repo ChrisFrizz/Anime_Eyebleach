@@ -1,5 +1,10 @@
 import background from '../background/background.jpg'
 
+/**
+ * HomePage del sito
+ * @constant containerStyle = lista di modificatori da applicare al background
+ * @returns h1 di benvenuto nel sito
+ */
 
 export default function Home() {
     const containerStyle: React.CSSProperties = {
@@ -20,7 +25,7 @@ export default function Home() {
 
     return (
         <div style={containerStyle}>
-            <h1>Welcome to Anime eyebleach</h1>
+            <h1>Welcome to Anime Eyebleach</h1>
         </div>
     );
 };

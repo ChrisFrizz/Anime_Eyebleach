@@ -1,9 +1,26 @@
 import { type FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * @interface ILoginNavigateState
+ * @param username da' il nome con cui chiamiamo l'user
+ */
+
 export interface ILoginNavigateState{
     username: string;
 }
+
+/**
+ * @function Login gestisce il login dell'utente al sito
+ * 
+ * @import react-router-dom
+ * 
+ * @constant navigate è il posto dove si reindirizza l'user
+ * 
+ * @function handleSubmit reindirizza alla collezione dopo aver completato il login
+ * 
+ * @returns form di login con username e bottone per mandare form
+ */
 
 export default function Login(){
     

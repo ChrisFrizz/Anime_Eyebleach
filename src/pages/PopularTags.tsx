@@ -3,6 +3,13 @@ import LikeButton from "../components/LikeButton";
 import axios from "axios";
 import { TagButton } from "../components/TagButton";
 
+/**
+ * @constant Lista di Tag di cui creare un bottone attraverso TagButton.tsx
+ * 
+ * @param TAG = nome del tag
+ * @param url = cosa scrivere alla fine del url
+ */
+
 const TagList = [
     { TAG: "catgirl", url: "catgirl" },
     { TAG: "foxgirl", url: "foxgirl" },
@@ -33,6 +40,22 @@ const TagList = [
     { TAG: "purple eye", url: "purple-eyes" },
 ];
 
+/**
+ * @function PopularTags crea una lista di bottoni da cliccare per chiamare una funzione GET usando axios
+ * 
+ * @import libreria axios per chiamate GET, anche da button onClick, senza caricare immediatamente a mount
+ * 
+ * @const imageURL (HD) / imageURLCompressed (!HD) e highQuality (bool) cambiano tra alta e bassa qualità immagine
+ * 
+ * @async fetchImage prende in input il tagURL da poi aggiungere alla fine per la chiamata GET
+ * 
+ * @returns Lista di bottoni per tag più "popolari"
+ *          Cliccato un bottone si caricano i pulsanti per aumentare risoluzione e salvare immagine su localStorage
+ *          Carica immagine da chiamata GET
+ * 
+ *          Cliccato bottone per aumentare risoluzione, carica bottoni per tornare in bassa e salvare immagine
+ */
+
 export default function PopularTags() {
 
     const [imageURL, setImageURL] = useState("");
@@ -50,7 +73,6 @@ export default function PopularTags() {
             const res = await axios.get(url);
             setImageURL(res.data.image.original.url);
             setImageURLCompressed(res.data.image.compressed.url);
-            setHighQuality(false);
         } catch (err: any) {
             console.error("Error fetching image:", err.message);
         } finally {
