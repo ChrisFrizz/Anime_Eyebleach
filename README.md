@@ -25,7 +25,7 @@ Clone the Repository
 
     git clone https://github.com/ChrisFrizz/Anime_Eyebleach.git
 
-● Go in the downloaded repository
+Go in the downloaded repository
 
     cd Anime_Eyebleach
 
